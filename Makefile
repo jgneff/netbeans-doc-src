@@ -1,0 +1,62 @@
+# ======================================================================
+# Makefile - Converts Markdown to Jira Notation using Pandoc
+#
+# GitHub Flavored Markdown
+#   https://help.github.com/articles/github-flavored-markdown/
+# Jira Text Formatting Notation
+#   https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa
+# ======================================================================
+SHELL = /bin/bash
+
+# Commands
+PANDOC = $(HOME)/opt/pandoc-2.7.3/bin/pandoc
+RECODE = recode
+SED = sed
+TR = tr
+
+# Command options
+PANDOC_OPTS = --from=gfm --to=jira
+RECODE_OPTS = html..utf-8
+
+# Sed scripts
+sed_images = 's/!images\//!/g'
+
+sed_hyphen = 's/&hyphen;/-/g'
+sed_lowbar = 's/&lowbar;/_/g'
+sed_utf8 = -e $(sed_hyphen) -e $(sed_lowbar)
+
+sed_code_head = 's/\*\r\r{code}/*\r{code}/g'
+sed_code_tail = 's/\r{code}\r\r/{code}\r\r/g'
+sed_cr_trim = 's/\r\r\r/\r\r/g'
+sed_tidy = -e $(sed_code_head) -e $(sed_code_tail) -e $(sed_cr_trim)
+
+# Translate commands - allows Sed to match patterns across newlines
+n2r = $(TR) '\n' '\r'
+r2n = $(TR) '\r' '\n'
+
+# ======================================================================
+# Pattern rules
+# ======================================================================
+
+%.tmp.jira: %.md
+	$(PANDOC) $(PANDOC_OPTS) --output=$@ $<
+
+%.utf8.jira: %.tmp.jira
+	cat $< | $(RECODE) $(RECODE_OPTS) | $(SED) $(sed_utf8) > $@
+
+%.img.jira: %.utf8.jira
+	$(SED) $(sed_images) $< > $@
+
+%.jira: %.img.jira
+	cat $< | $(n2r) | $(SED) $(sed_tidy) | $(r2n) > $@
+
+# ======================================================================
+# Explicit rules
+# ======================================================================
+
+.PHONY: all clean
+
+all: README.jira
+
+clean:
+	rm -f *.jira
