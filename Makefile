@@ -19,18 +19,20 @@ PANDOC_OPTS = --from=gfm --to=jira
 RECODE_OPTS = html..utf-8
 
 # Sed scripts
-sed_images = 's/!images\//!/g'
-
 sed_hyphen = 's/&hyphen;/-/g'
 sed_lowbar = 's/&lowbar;/_/g'
 sed_utf8 = -e $(sed_hyphen) -e $(sed_lowbar)
 
 sed_code_head = 's/\*\r\r{code}/*\r{code}/g'
 sed_code_tail = 's/\r{code}\r\r/{code}\r\r/g'
-sed_cr_trim = 's/\r\r\r/\r\r/g'
-sed_fix_brace = 's/ \\{/ {/g'
+sed_code_bash = 's/{code}\r\#!\/bin\/bash/{code:bash}\r\#!\/bin\/bash/g'
+sed_double_nl = 's/\r\r\r/\r\r/g'
 sed_tidy = -e $(sed_code_head) -e $(sed_code_tail) \
-    -e $(sed_cr_trim) -e $(sed_fix_brace)
+    -e $(sed_code_bash) -e $(sed_double_nl)
+
+sed_images = 's/!images\//!/g'
+sed_backslash = 's/ \\{/ {/'
+sed_fixes = -e $(sed_images) -e $(sed_backslash)
 
 # Translate commands - allows Sed to match patterns across newlines
 n2r = $(TR) '\n' '\r'
@@ -46,11 +48,11 @@ r2n = $(TR) '\r' '\n'
 %.utf8.jira: %.tmp.jira
 	cat $< | $(RECODE) $(RECODE_OPTS) | $(SED) $(sed_utf8) > $@
 
-%.img.jira: %.utf8.jira
-	$(SED) $(sed_images) $< > $@
-
-%.jira: %.img.jira
+%.tidy.jira: %.utf8.jira
 	cat $< | $(n2r) | $(SED) $(sed_tidy) | $(r2n) > $@
+
+%.jira: %.tidy.jira
+	$(SED) $(sed_fixes) $< > $@
 
 # ======================================================================
 # Explicit rules

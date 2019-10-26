@@ -1,4 +1,4 @@
-# Attaching JavaFX Javadoc and Sources in NetBeans
+# Attaching JavaFX Javadoc and Sources
 
 I have been unable to attach the JavaFX Javadoc and Sources to their modular JAR files without encountering errors in their use by NetBeans.
 Attaching the Sources allows you to navigate directly to the JavaFX source code of a field or method.
