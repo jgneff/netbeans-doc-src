@@ -28,7 +28,9 @@ sed_utf8 = -e $(sed_hyphen) -e $(sed_lowbar)
 sed_code_head = 's/\*\r\r{code}/*\r{code}/g'
 sed_code_tail = 's/\r{code}\r\r/{code}\r\r/g'
 sed_cr_trim = 's/\r\r\r/\r\r/g'
-sed_tidy = -e $(sed_code_head) -e $(sed_code_tail) -e $(sed_cr_trim)
+sed_fix_brace = 's/ \\{/ {/g'
+sed_tidy = -e $(sed_code_head) -e $(sed_code_tail) \
+    -e $(sed_cr_trim) -e $(sed_fix_brace)
 
 # Translate commands - allows Sed to match patterns across newlines
 n2r = $(TR) '\n' '\r'
