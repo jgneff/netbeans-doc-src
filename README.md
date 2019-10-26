@@ -21,17 +21,17 @@ The two issues concerning Maven projects will be fixed by the following pull req
 
 * [apache/netbeans#1548](https://github.com/apache/netbeans/pull/1548): (NETBEANS-1396) Missing code completion and Javadocs in maven projects with classifier
 
-I plan to create new issues for the new problems described here:
+I created the following issues for the new problems described here:
 
-* [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): "Attach Javadoc" really means "Attach Sources"
-* [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Invalid Javadoc root javafx-sdk-13/doc/javafx.base
-* [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Adding Javadoc and Sources to Global Library fails
-* [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): nb-javac 2.0 fails to parse JavaFX Sources
-* [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Modular Ant project fails to run without nb-javac
-* [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Non-modular Gradle project fails to recognize Javadoc
-* [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Modular Gradle project fails to recognize Javadoc and Sources
+* [NETBEANS-3297](https://issues.apache.org/jira/browse/NETBEANS-3297): "Attach Javadoc" really means "Attach Sources"
+* [NETBEANS-3298](https://issues.apache.org/jira/browse/NETBEANS-3298): Invalid Javadoc root javafx-sdk-13/doc/javafx.base
+* [NETBEANS-3299](https://issues.apache.org/jira/browse/NETBEANS-3299): Adding Javadoc and Sources to Global Library fails
+* [NETBEANS-3300](https://issues.apache.org/jira/browse/NETBEANS-3300): nb-javac 2.0 fails to parse JavaFX Sources
+* [NETBEANS-3301](https://issues.apache.org/jira/browse/NETBEANS-3301): Modular Ant project fails to run without nb-javac
+* [NETBEANS-3302](https://issues.apache.org/jira/browse/NETBEANS-3302): Non-modular Gradle project fails to recognize Javadoc
+* [NETBEANS-3303](https://issues.apache.org/jira/browse/NETBEANS-3303): Modular Gradle project fails to recognize Javadoc and Sources
 
-There are related issues for the JavaFX Javadoc and sample NetBeans projects on GitHub:
+There are also related issues for the JavaFX Javadoc and sample NetBeans projects on GitHub:
 
 * [openjfx/javadoc#6](https://github.com/openjfx/javadoc/issues/6): Attached Javadoc does not follow Maven convention
 * [openjfx/samples#39](https://github.com/openjfx/samples/issues/39): IllegalStateException running NetBeans Modular Maven project
@@ -149,7 +149,7 @@ The "Javadoc not found" and "Attach Javadoc..." notices sometimes indicate that 
 
 I created the following issue to resolve the wording.
 
-> [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): "Attach Javadoc" really means "Attach Sources"
+> [NETBEANS-3297](https://issues.apache.org/jira/browse/NETBEANS-3297): "Attach Javadoc" really means "Attach Sources"
 
 Holding down the *Ctrl* key when clicking the same method shows that the source code is not available.
 
@@ -167,7 +167,7 @@ Click the *OK* button to dismiss each window.
 
 I created the following issue to track the error, even though the problem may lie in the JavaFX Javadoc packaging.
 
-> [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Invalid Javadoc root javafx-sdk-13/doc/javafx.base
+> [NETBEANS-3298](https://issues.apache.org/jira/browse/NETBEANS-3298): Invalid Javadoc root javafx-sdk-13/doc/javafx.base
 
 With all of the Javadoc and Sources added, the JAVAFX13 Global Library looks like this:
 
@@ -185,7 +185,7 @@ The source code in both cases shows a file full of parsing errors.
 
 I created the following issue for these errors.
 
-> [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Adding Javadoc and Sources to Global Library fails
+> [NETBEANS-3299](https://issues.apache.org/jira/browse/NETBEANS-3299): Adding Javadoc and Sources to Global Library fails
 
 ### Add to JAR files
 
@@ -221,7 +221,7 @@ These errors are essentially the same as those reported by the following NetBean
 The difference is that NETBEANS-2290 reports the errors of *nb-javac* version 1.71 when parsing the JavaFX source code, while the more recent *nb-javac* 2.0 encounters the errors described here.
 I created the following issue for these new errors.
 
-> [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): nb-javac 2.0 fails to parse JavaFX Sources
+> [NETBEANS-3300](https://issues.apache.org/jira/browse/NETBEANS-3300): nb-javac 2.0 fails to parse JavaFX Sources
 
 ### Uninstall *nb-javac*
 
@@ -272,7 +272,7 @@ The following notification appears when clicking the *Run Project* button in the
 
 I created the following issue for the error.
 
-> [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Modular Ant project fails to run without nb-javac
+> [NETBEANS-3301](https://issues.apache.org/jira/browse/NETBEANS-3301): Modular Ant project fails to run without nb-javac
 
 The Javadoc is not found because neither the Javadoc nor Sources are attached, but clicking through to the Sources fails to open even the *Compiled Code* view.
 
@@ -295,7 +295,7 @@ But each time we navigate to the Sources, we get the same exception as before.
 
 I created the following issue for the error.
 
-> [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): nb-javac 2.0 fails to parse JavaFX Sources
+> [NETBEANS-3300](https://issues.apache.org/jira/browse/NETBEANS-3300): nb-javac 2.0 fails to parse JavaFX Sources
 
 We can try one more thing: uninstall the *nb-javac* plug-in again and run the project from the command line.
 The environment variables are defined in the shell script *~/bin/jdkenv.sh*, listed previously.
@@ -455,7 +455,7 @@ The behavior is the same after uninstalling the *nb-javac* plug-in.
 
 I created the following issue to track the error, even though the problem may lie in the JavaFX Javadoc packaging.
 
-> [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Non-modular Gradle project fails to recognize Javadoc
+> [NETBEANS-3302](https://issues.apache.org/jira/browse/NETBEANS-3302): Non-modular Gradle project fails to recognize Javadoc
 
 ## Gradle Modular
 
@@ -470,4 +470,4 @@ The behavior is the same after uninstalling the *nb-javac* plug-in.
 
 I created the following issue for these errors.
 
-> [NETBEANS-XXXX](https://issues.apache.org/jira/browse/NETBEANS): Modular Gradle project fails to recognize Javadoc and Sources
+> [NETBEANS-3303](https://issues.apache.org/jira/browse/NETBEANS-3303): Modular Gradle project fails to recognize Javadoc and Sources
