@@ -4,8 +4,6 @@ To figure out how this is supposed to work, I compared the use of the Javadoc an
 For simplicity, I used the [JavaFX samples](https://github.com/openjfx/samples) under the *Non-Modular/Java* directories for each IDE.
 I worked around the NetBeans problems by listing the individual JAR files in the Compile Classpath as explained in [NETBEANS-3296](https://issues.apache.org/jira/browse/NETBEANS-3296).
 
-In the screenshots below, NetBeans is first or on the left, and IntelliJ IDEA is second or on the right.
-
 ## Public method
 
 In both IDEs I opened *Main.java* and selected the method `setTitle`, which actually has no Javadoc comments in the source code.
@@ -32,8 +30,9 @@ In both IDEs I opened *Main.java* and selected the method `setTitle`, which actu
 When the Javadoc and Sources are attached, NetBeans enables both toolbar buttons to (1) show the documentation in an external Web browser and (2) open the source in the editor.
 IntelliJ IDEA does the same, with a toolbar button to edit the source (not shown below) and a link to open the documentation externally.
 
-![NetBeans Javadoc and Sources](images/netbeans-javadoc-sources.png)
-![IDEA Javadoc and Sources](images/intellij-javadoc-sources.png)
+| ![NetBeans Javadoc and Sources](images/netbeans-javadoc-sources.png) | ![IDEA Javadoc and Sources](images/intellij-javadoc-sources.png) |
+|:---------------:|:-------------:|
+| Apache NetBeans | IntelliJ IDEA |
 
 ### Javadoc only
 
@@ -42,8 +41,9 @@ When only the Javadoc is available, without the Sources, NetBeans disables the t
 IntelliJ IDEA does something similar, displaying a *Decompiled.class* view of the sources.
 Both IDEs display the Javadoc in full with the ability to open the page externally.
 
-![NetBeans Javadoc only](images/netbeans-javadoc-only.png)
-![IDEA Javadoc only](images/intellij-javadoc-only.png)
+| ![NetBeans Javadoc only](images/netbeans-javadoc-only.png) | ![IDEA Javadoc only](images/intellij-javadoc-only.png) |
+|:---------------:|:-------------:|
+| Apache NetBeans | IntelliJ IDEA |
 
 ### Sources only
 
@@ -51,8 +51,9 @@ When only the Sources are available, without the Javadoc, NetBeans finds no Java
 IntelliJ IDEA shows only the method signature and modifiers.
 Both IDEs disable the options to show the documentation externally.
 
-![NetBeans Sources only](images/netbeans-sources-only.png)
-![IDEA Sources only](images/intellij-sources-only.png)
+| ![NetBeans Sources only](images/netbeans-sources-only.png) | ![IDEA Sources only](images/intellij-sources-only.png) |
+|:---------------:|:-------------:|
+| Apache NetBeans | IntelliJ IDEA |
 
 ### Neither Javadoc nor Sources
 
@@ -60,8 +61,9 @@ When neither are present, NetBeans displays an error and IntelliJ IDEA shows jus
 Navigating to the source shows the Compiled Code view in NetBeans and the *Decompiled.class* view in IntelliJ IDEA.
 There is no option to show the documentation externally.
 
-![NetBeans neither](images/netbeans-neither.png)
-![IDEA neither](images/intellij-neither.png)
+| ![NetBeans neither](images/netbeans-neither.png) | ![IDEA neither](images/intellij-neither.png) |
+|:---------------:|:-------------:|
+| Apache NetBeans | IntelliJ IDEA |
 
 ### Precedence
 
@@ -84,8 +86,9 @@ The result below shows that NetBeans displays the Javadoc comments in the source
 Furthermore, IntelliJ IDEA shows the Javadoc HTML text even when you navigate to the source code and select the `setTitle` method where it is defined.
 The only way to make IntelliJ IDEA show the Javadoc comments in the source code is to remove the Javadoc directories from the JavaFX Global Library.
 
-![NetBeans precedence](images/netbeans-precedence.png)
-![IDEA precedence](images/intellij-precedence.png)
+| ![NetBeans precedence](images/netbeans-precedence.png) | ![IDEA precedence](images/intellij-precedence.png) |
+|:---------------:|:-------------:|
+| Apache NetBeans | IntelliJ IDEA |
 
 ## Non-public method
 
@@ -119,12 +122,14 @@ To see what the IDEs do for a method that has Javadoc comments but is not publis
 In this case, both IDEs display the Javadoc from the source code.
 They both attempt to show the documentation in an external Web browser at `Stage.html#initSecurityDialog(boolean)`, but that anchor location does not exist, so the browser opens to the top of the page.
 
-![NetBeans non-public method](images/netbeans-non-public.png)
-![IDEA non-public method](images/intellij-non-public.png)
+| ![NetBeans non-public method](images/netbeans-non-public.png) | ![IDEA non-public method](images/intellij-non-public.png) |
+|:---------------:|:-------------:|
+| Apache NetBeans | IntelliJ IDEA |
 
 ## JavaFX library
 
 The JavaFX library was defined in NetBeans and IntelliJ IDEA with the Javadoc and Sources as shown below.
 
-![NetBeans JavaFX library](images/netbeans-javafx-library.png)
-![IDEA JavaFX library](images/intellij-javafx-library.png)
+| ![NetBeans JavaFX library](images/netbeans-javafx-library.png) | ![IDEA JavaFX library](images/intellij-javafx-library.png) |
+|:---------------:|:-------------:|
+| Apache NetBeans | IntelliJ IDEA |
