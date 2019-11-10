@@ -63,6 +63,30 @@ There is no option to show the documentation externally.
 ![NetBeans neither](images/netbeans-neither.png)
 ![IDEA neither](images/intellij-neither.png)
 
+### Precedence
+
+To discover which takes precedence, the Javadoc or the Sources, I modified the *Stage.java* source code as follows.
+
+```Java
+    /**
+     * Sets the title of the {@code Stage}. Note that this Javadoc comment is
+     * different than the text published in the Javadoc HTML for this method.
+     *
+     * @param value the string to set as the {@code Stage} title
+     */
+    public final void setTitle(String value) {
+        titleProperty().set(value);
+    }
+```
+
+The result below shows that NetBeans displays the Javadoc comments in the source code over anything in the Javadoc HTML, while IntelliJ IDEA gives priority to the Javadoc HTML over the source comments.
+
+Furthermore, IntelliJ IDEA shows the Javadoc HTML text even when you navigate to the source code and select the `setTitle` method where it is defined.
+The only way to make IntelliJ IDEA show the Javadoc comments in the source code is to remove the Javadoc directories from the JavaFX Global Library.
+
+![NetBeans precedence](images/netbeans-precedence.png)
+![IDEA precedence](images/intellij-precedence.png)
+
 ## Non-public method
 
 To see what the IDEs do for a method that has Javadoc comments but is not published in the documentation, I opened *Stage.java* by navigating from the method `setTitle` above and selected the method `initSecurityDialog`, whose source code is listed below.
@@ -97,3 +121,10 @@ They both attempt to show the documentation in an external Web browser at `Stage
 
 ![NetBeans non-public method](images/netbeans-non-public.png)
 ![IDEA non-public method](images/intellij-non-public.png)
+
+## JavaFX library
+
+The JavaFX library was defined in NetBeans and IntelliJ IDEA with the Javadoc and Sources as shown below.
+
+![NetBeans JavaFX library](images/netbeans-javafx-library.png)
+![IDEA JavaFX library](images/intellij-javafx-library.png)
