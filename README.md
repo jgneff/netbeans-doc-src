@@ -1,5 +1,12 @@
 # Attaching JavaFX Javadoc and Sources
 
+## Timeline
+
+* **2019-10-25:** Created this repository and the corresponding NetBeans bug report.
+* **2020-01-30:** The [first of these fixes](https://github.com/apache/netbeans/pull/1548) is merged for release in NetBeans 11.3.
+
+## Bug Report
+
 I have been unable to attach the JavaFX Javadoc and Sources to their modular JAR files without encountering errors in their use by NetBeans.
 Attaching the Sources allows you to navigate directly to the JavaFX source code of a field or method.
 Attaching the Javadoc allows you to open an external Web browser directly to the appropriate page of the documentation.
